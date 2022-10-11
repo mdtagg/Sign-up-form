@@ -28,8 +28,7 @@ body {
 .logo-banner {
     height:15%;
     width:auto;
-    background-color: black;
-    opacity:0.5;
+    background-color: rgba(0,0,0,.5);
 }
 
 .inside-logo-banner {
