@@ -17,7 +17,7 @@ body {
 
 .image-sidebar {
     height:100%;
-    width:30%;
+    width:33%;
     background-image: url("../pics/Yosemite-valley.jpg");
     background-size:cover;
     display:flex;
@@ -51,6 +51,16 @@ body {
     background-image: url("../pics/.odin-image");
     height:80%;
     width:20%;
+}
+
+.photo-credit {
+    height:280%;
+    /* border:2px solid black; */
+    font-size: .75rem;
+    display:flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    color:white;
 }
 
 .right-side {
