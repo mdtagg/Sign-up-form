@@ -43,14 +43,8 @@ body {
 }
 
 .logo-banner img {
-    height:80%;
+    height:70%;
     width:2rem;
-    width:20%;
-}
-
-.odin-image {
-    background-image: url("../pics/.odin-image");
-    height:80%;
     width:15%;
 }
 
@@ -88,13 +82,21 @@ body {
 .form-section {
     height:40%;
     background-color:whitesmoke;
-    width:auto;
-    
+    width:100%;
 }
 
-.form-container form{
+.form-container{
+    width:70%;
+    /* border:1px solid black; */
     display:flex;
-    flex-direction: column;
+    justify-content: space-around;
+}
+
+.form-container > form {
+    display:flex;
+    justify-content: space-around;
+    width:70%;
+    /* border:1px solid black; */
 }
 
 .submit-section {
