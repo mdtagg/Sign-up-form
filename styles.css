@@ -1,0 +1,61 @@
+* {
+    box-sizing: border-box;
+    margin:0;
+    padding:0;
+}
+
+body {
+    height:100vh;
+    width:100vw;
+}
+
+.container {
+    height:100%;
+    width:100%;
+    display:flex;
+}
+
+.image-sidebar {
+    height:100%;
+    width:30%;
+    background-image: url("../pics/Yosemite-valley.jpg");
+    background-size:cover;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.logo-banner {
+    height:15%;
+    width:auto;
+    background-color: black;
+    opacity:0.5;
+}
+
+.inside-logo-banner {
+    display:flex;
+    height:100%;
+    color:white;
+    justify-content: center;
+    align-items: center;
+    opacity:1;
+    font-size: 2rem;
+}
+
+.logo-banner img {
+    height:80%;
+    width:2rem;
+    width:20%;
+}
+
+.odin-image {
+    background-image: url("../pics/.odin-image");
+    height:80%;
+    width:20%;
+}
+
+.right-side {
+    height:auto;
+    width:70%;
+    background-color: blue;
+}
