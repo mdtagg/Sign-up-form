@@ -92,6 +92,11 @@ body {
     
 }
 
+.form-container form{
+    display:flex;
+    flex-direction: column;
+}
+
 .submit-section {
     height:30%;
     width:auto;
