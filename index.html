@@ -31,25 +31,30 @@
                 <br>You <span>know</span> you want to.
             </div>
             <div class="form-section">
-                <form>
-                    <label for="first-name">First Name</label>
-                    <input id="first-name" type="text" placeholder="John">
-                    <label for="email">Email</label>
-                    <input id="email" type="email">
-                    <label for="first-password">Password</label>
-                    <input id="first-password" type="password">
-                </form>
-                <form action="">
-                    <label for="last-name">Last Name</label>
-                    <input id="last-name" type="text" placeholder="Doe">
-                    <label for="phone-number">Phone Number</label>
-                    <input id="phone-number" type="number">
-                    <label for="confirm-password">Confirm Password</label>
-                    <input id="confirm-password" type="password">
+                <form id="my-form" action="results.html" method="get" target="_blank">
+                    <div class="form-column">
+                        <label for="first-name">First Name</label>
+                        <input id="first-name" type="text" name="first-name">
+                        <label for="email">Email</label>
+                        <input id="email" type="email" name="email">
+                        <label for="first-password">Password</label>
+                        <input id="first-password" type="password" name="first-password">
+                    </div>
+                    <div class="form-column">
+                        <label for="last-name">Last Name</label>
+                        <input id="last-name" type="text" name="last-name">
+                        <label for="phone-number">Phone Number</label>
+                        <input id="phone-number" type="number" name="phone-number">
+                        <label for="confirm-password">Confirm Password</label>
+                        <input id="confirm-password" type="password" name="confirmed-password">
+                    </div>
+                    
                 </form>
             </div>
             <div class="submit-section">
-                <button type="submit">Create Account</button>
+           
+                <button type="submit" form="my-form">Create Account</button>
+               
                 <div class="submit-text">
                     Already have an account? <a href="" target="_blank">Log In</a>
                 </div>
