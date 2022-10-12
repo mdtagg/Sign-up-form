@@ -120,5 +120,25 @@ input {
     background-color:lightgray;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
+    padding:40px;
+}
+
+button {
+    height:40px;
+    width:200px;
+    background-color: darkgreen;
+    color:white;
+    cursor: pointer;
+    border-radius:5px;
+    border:1px;
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    font-weight:600;
+}
+
+.submit-text a {
+    text-decoration: none;
+    color:darkgreen;
+    font-weight: 900;
 }
