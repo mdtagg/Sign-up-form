@@ -116,6 +116,15 @@ input {
     display:inline-block;
 }
 
+input:focus {
+    border:1px solid blue;
+    box-shadow: 1px 1px 3px;
+}
+
+.error {
+    border:1px solid red;
+}
+
 .submit-section {
     height:30%;
     width:auto;
