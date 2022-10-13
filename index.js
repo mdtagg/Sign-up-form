@@ -4,11 +4,10 @@ const names =
 document.getElementById('last-name')]
 
 names.forEach(name => {
-    name.addEventListener('focusout', testError)})
+    name.addEventListener('focusout', testName)})
 
-function testError(e) {
+function testName(e) {
     let name = e.target.value
-    console.log(name)
     if(name === "") {
         e.target.classList.add('error')
     }else {
@@ -16,21 +15,16 @@ function testError(e) {
     }
 }
 
+const email = document.getElementById('email')
+email.addEventListener('focusout', testEmail)
 
-// const firstName = document.getElementById('first-name')
-// firstName.addEventListener('keydown', (e) => firstName.textContent = e.target.value)
-// firstName.addEventListener('focusout', error)
-
-// const lastName = document.getElementById('last-name')
-// lastName.addEventListener('keydown', (e) => lastName.textContent = e.target.value)
-// lastName.addEventListener('focusout', error)
-
-// function error(e) {
-//     console.log(e.target.value)
-//     let name = e.target.value
-//     if(name === "") {
-//         firstName.classList.add('error')
-//     }else {
-//         firstName.classList.remove('error')
-//     }
-// }
+function testEmail(e) {
+    let emailCheck = /^[A-z]+[@]{1}[A-z]+[.]{1}[A-z]/
+    let string = e.target.value
+    let test = emailCheck.test(string)
+    if(!test) {
+        e.target.classList.add('error')
+    }else {
+        e.target.classList.remove('error')
+    }
+}
