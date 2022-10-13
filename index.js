@@ -19,7 +19,7 @@ const email = document.getElementById('email')
 email.addEventListener('focusout', testEmail)
 
 function testEmail(e) {
-    let emailCheck = /^[A-z]+[@]{1}[A-z]+[.]{1}[A-z]/
+    let emailCheck = /^\w+[@]{1}[A-z]+[.]{1}[A-z]{3}/
     let string = e.target.value
     let test = emailCheck.test(string)
     if(!test) {
@@ -60,7 +60,6 @@ function confirmPasswords(e) {
     }else {
         secondPassword = e.target.value
     }
-
 }
 
 function checkPassword(e) {
@@ -69,10 +68,7 @@ function checkPassword(e) {
     let passwordCheck = /[A-Z]?[a-z]?[@#$%]{1,4}?/
     let test = passwordCheck.test(password)
     let passwordLength = password.length
-    console.log(firstPassword)
-    console.log(secondPassword)
 
-    console.log(firstPassword !== secondPassword)
     if(firstPassword !== secondPassword) {
         document.getElementById('first-password').classList.add('error')
         document.getElementById('confirmed-password').classList.add('error')
@@ -89,6 +85,36 @@ function checkPassword(e) {
     }else {
         e.target.classList.add('error')
         passwordFail.textContent = 'Password must contain 1 upper case letter,1 lower case letter, a special symbol (@#$%) and be at least 10 characters long'
+    }
+}
+
+let first_password = document.getElementById('first-password')
+let second_password = document.getElementById('confirmed-password')
+
+const submit = document.getElementById('form-submit')
+submit.addEventListener('click', submitTest)
+
+function submitTest() {
+    
+    let allInputs = [document.getElementById('first-name'),
+    document.getElementById('last-name'),
+    document.getElementById('email'),
+    document.getElementById('phone-number'),
+    document.getElementById('first-password'),
+    document.getElementById('confirmed-password')]
+
+    allInputs.forEach(input => {
+
+        if(input.value === "") {
+            input.classList.add('error')
+        }
+        
+    })
+    let test = document.getElementsByClassName('error')
+    if(test.length !== 0) {
+        return
+    }else {
+        document.getElementById('my-form').submit()
     }
 }
 
