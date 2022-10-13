@@ -1,27 +1,28 @@
 
+//Names section
+let firstName = document.getElementById('first-name')
+let lastName = document.getElementById('last-name')
+
 const names = 
-[document.getElementById('first-name'),
-document.getElementById('last-name')]
+[firstName,lastName]
 
 names.forEach(name => {
-    name.addEventListener('focusout', testName)})
+    name.addEventListener('focusout', (e) => {
+        if(e.target.value === "") {
+            e.target.classList.add('error')
+        }else {
+            e.target.classList.remove('error')
+        }
+    })})
 
-function testName(e) {
-    let name = e.target.value
-    if(name === "") {
-        e.target.classList.add('error')
-    }else {
-        e.target.classList.remove('error')
-    }
-}
+//Email section
 
 const email = document.getElementById('email')
 email.addEventListener('focusout', testEmail)
 
 function testEmail(e) {
     let emailCheck = /^\w+[@]{1}[A-z]+[.]{1}[A-z]{3}/
-    let string = e.target.value
-    let test = emailCheck.test(string)
+    let test = emailCheck.test(e.target.value)
     if(!test) {
         e.target.classList.add('error')
     }else {
@@ -29,36 +30,37 @@ function testEmail(e) {
     }
 }
 
+//Phone number section
+
 const phoneNumber = document.getElementById('phone-number')
 phoneNumber.addEventListener('focusout', testPhoneNumber)
 
 function testPhoneNumber(e) {
-    let phoneNumber = e.target.value
-    console.log(phoneNumber.length === 10)
-    if(phoneNumber.length === 10) {
+    let phoneNumberDigits = e.target.value.length
+    if(phoneNumberDigits === 10) {
         e.target.classList.remove('error')
     }else {
         e.target.classList.add('error')
     }
 }
 
-const passwords = [document.getElementById('first-password'),
-document.getElementById('confirmed-password')]
+//Passwords section
+
+let firstPassword = document.getElementById('first-password')
+let secondPassword = document.getElementById('confirmed-password')
+
+const passwords = [firstPassword,secondPassword]
 
 passwords.forEach(password => {
     password.addEventListener('focusout', confirmPasswords)
     password.addEventListener('focusout', checkPassword)
-    
 })
-
-let firstPassword = ""
-let secondPassword = ""
 
 function confirmPasswords(e) {
     if(e.target.id === "first-password") {
-        firstPassword = e.target.value
+        firstPassword.value = e.target.value
     }else {
-        secondPassword = e.target.value
+        secondPassword.value = e.target.value
     }
 }
 
@@ -69,46 +71,34 @@ function checkPassword(e) {
     let test = passwordCheck.test(password)
     let passwordLength = password.length
 
-    if(firstPassword !== secondPassword) {
-        document.getElementById('first-password').classList.add('error')
-        document.getElementById('confirmed-password').classList.add('error')
-        passwordFail.textContent = "Passwords do not match"
+    if(firstPassword.value !== secondPassword.value) {
+        firstPassword.classList.add('error')
+        secondPassword.classList.add('error')
+        passwordFail.textContent = "*Passwords do not match"
         return
     }
     else if(test && passwordLength >= 10) {
-        document.getElementById('first-password').classList.remove('error')
-        document.getElementById('confirmed-password').classList.remove('error')
+        firstPassword.classList.remove('error')
+        secondPassword.classList.remove('error')
         passwordFail.textContent = ""
-    }else if(test && passwordLength < 10){
-        passwordFail.textContent = 'Password must be at least 10 characters '
-        e.target.classList.add('error')
     }else {
         e.target.classList.add('error')
-        passwordFail.textContent = 'Password must contain 1 upper case letter,1 lower case letter, a special symbol (@#$%) and be at least 10 characters long'
+        passwordFail.textContent = '*Password must contain at least 1 upper case letter,1 lower case letter, a special symbol (@#$%) and be at least 10 characters long'
     }
 }
-
-let first_password = document.getElementById('first-password')
-let second_password = document.getElementById('confirmed-password')
 
 const submit = document.getElementById('form-submit')
 submit.addEventListener('click', submitTest)
 
 function submitTest() {
     
-    let allInputs = [document.getElementById('first-name'),
-    document.getElementById('last-name'),
-    document.getElementById('email'),
-    document.getElementById('phone-number'),
-    document.getElementById('first-password'),
-    document.getElementById('confirmed-password')]
+    let allInputs = [firstName,lastName,email,
+        phoneNumber,firstPassword,secondPassword]
 
     allInputs.forEach(input => {
-
         if(input.value === "") {
             input.classList.add('error')
         }
-        
     })
     let test = document.getElementsByClassName('error')
     if(test.length !== 0) {
