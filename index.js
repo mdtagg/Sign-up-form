@@ -46,26 +46,49 @@ const passwords = [document.getElementById('first-password'),
 document.getElementById('confirmed-password')]
 
 passwords.forEach(password => {
+    password.addEventListener('focusout', confirmPasswords)
     password.addEventListener('focusout', checkPassword)
+    
 })
+
+let firstPassword = ""
+let secondPassword = ""
+
+function confirmPasswords(e) {
+    if(e.target.id === "first-password") {
+        firstPassword = e.target.value
+    }else {
+        secondPassword = e.target.value
+    }
+
+}
 
 function checkPassword(e) {
     let password = e.target.value
-    console.log(password)
     let passwordFail = document.getElementById('password-requirements')
-    console.log(passwordFail)
     let passwordCheck = /[A-Z]?[a-z]?[@#$%]{1,4}?/
     let test = passwordCheck.test(password)
     let passwordLength = password.length
-    console.log(test)
-    if(test && passwordLength >= 10) {
-        e.target.classList.remove('error')
+    console.log(firstPassword)
+    console.log(secondPassword)
+
+    console.log(firstPassword !== secondPassword)
+    if(firstPassword !== secondPassword) {
+        document.getElementById('first-password').classList.add('error')
+        document.getElementById('confirmed-password').classList.add('error')
+        passwordFail.textContent = "Passwords do not match"
+        return
+    }
+    else if(test && passwordLength >= 10) {
+        document.getElementById('first-password').classList.remove('error')
+        document.getElementById('confirmed-password').classList.remove('error')
         passwordFail.textContent = ""
     }else if(test && passwordLength < 10){
         passwordFail.textContent = 'Password must be at least 10 characters '
         e.target.classList.add('error')
     }else {
         e.target.classList.add('error')
-        passwordFail.textContent = 'Password must contain at least 1 upper case letter 1 lower case letter and a special symbol (@#$%)'
+        passwordFail.textContent = 'Password must contain 1 upper case letter,1 lower case letter, a special symbol (@#$%) and be at least 10 characters long'
     }
 }
+
