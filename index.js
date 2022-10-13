@@ -28,3 +28,16 @@ function testEmail(e) {
         e.target.classList.remove('error')
     }
 }
+
+const phoneNumber = document.getElementById('phone-number')
+phoneNumber.addEventListener('focusout', testPhoneNumber)
+
+function testPhoneNumber(e) {
+    let phoneNumber = e.target.value
+    console.log(phoneNumber.length === 10)
+    if(phoneNumber.length === 10) {
+        e.target.classList.remove('error')
+    }else {
+        e.target.classList.add('error')
+    }
+}
