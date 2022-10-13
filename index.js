@@ -41,3 +41,31 @@ function testPhoneNumber(e) {
         e.target.classList.add('error')
     }
 }
+
+const passwords = [document.getElementById('first-password'),
+document.getElementById('confirmed-password')]
+
+passwords.forEach(password => {
+    password.addEventListener('focusout', checkPassword)
+})
+
+function checkPassword(e) {
+    let password = e.target.value
+    console.log(password)
+    let passwordFail = document.getElementById('password-requirements')
+    console.log(passwordFail)
+    let passwordCheck = /[A-Z]?[a-z]?[@#$%]{1,4}?/
+    let test = passwordCheck.test(password)
+    let passwordLength = password.length
+    console.log(test)
+    if(test && passwordLength >= 10) {
+        e.target.classList.remove('error')
+        passwordFail.textContent = ""
+    }else if(test && passwordLength < 10){
+        passwordFail.textContent = 'Password must be at least 10 characters '
+        e.target.classList.add('error')
+    }else {
+        e.target.classList.add('error')
+        passwordFail.textContent = 'Password must contain at least 1 upper case letter 1 lower case letter and a special symbol (@#$%)'
+    }
+}

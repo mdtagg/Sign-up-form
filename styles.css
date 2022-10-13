@@ -125,6 +125,18 @@ input:focus {
     border:1px solid red;
 }
 
+#password-requirements {
+    height:10px;
+    font-size:.75rem;
+    color:red;
+    /* border:1px solid black; */
+    
+}
+
+.form-div {
+    height:10px; 
+}
+
 .submit-section {
     height:30%;
     width:auto;
